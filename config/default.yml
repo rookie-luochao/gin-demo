@@ -1,0 +1,6 @@
+DEMO_DOCKER__Logger_Level: ""
+DEMO_DOCKER__Logger_Output: Always
+DEMO_DOCKER__Server_Mode: debug
+DEMO_DOCKER__Server_UseH2C: "false"
+DEMO_DOCKER__TestEnv: "123"
+DEMO_DOCKER__opt: "9090"

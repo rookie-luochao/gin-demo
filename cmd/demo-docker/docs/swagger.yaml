@@ -1,0 +1,233 @@
+definitions:
+  controller.ListUserResp:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.User'
+        type: array
+      total:
+        type: integer
+    type: object
+  hello.HelloPostParam:
+    properties:
+      name:
+        type: string
+    type: object
+  hello.HelloResp:
+    properties:
+      data:
+        description: 结果
+        type: string
+    type: object
+  model.User:
+    properties:
+      createdAt:
+        type: string
+      key:
+        type: integer
+      mobile:
+        description: 电话
+        type: string
+      mobileType:
+        allOf:
+        - $ref: '#/definitions/types.MobileType'
+        description: 电话运营商
+      nickName:
+        description: 昵称
+        type: string
+      updatedAt:
+        type: string
+      userID:
+        type: integer
+      userType:
+        allOf:
+        - $ref: '#/definitions/types.UserType'
+        description: 用户角色
+    type: object
+  types.MobileType:
+    enum:
+    - 移动
+    - 联通
+    type: string
+    x-enum-comments:
+      USER_TYPE_D: 管理员
+    x-enum-varnames:
+    - USER_TYPE_Y
+    - USER_TYPE_D
+  types.UserType:
+    enum:
+    - 0
+    - 1
+    - 2
+    type: integer
+    x-enum-comments:
+      USER_TYPE__ADMIN: 管理员
+      USER_TYPE__USER: 用户
+    x-enum-varnames:
+    - USER_TYPE_UNKNOWN
+    - USER_TYPE__ADMIN
+    - USER_TYPE__USER
+  user.CreateOrUpdateUserBody:
+    properties:
+      mobile:
+        description: 手机号
+        type: string
+      name:
+        description: 用户名
+        type: string
+    type: object
+  utils.ErrorResp:
+    properties:
+      error:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /demo-docker/api/v1/hello:
+    get:
+      consumes:
+      - application/json
+      description: HelloGet
+      operationId: HelloGet
+      parameters:
+      - description: Authorization Token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/hello.HelloResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+      summary: HelloGet
+      tags:
+      - hello
+    post:
+      consumes:
+      - application/json
+      description: HelloPost
+      operationId: HelloPost
+      parameters:
+      - description: Authorization Token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/hello.HelloPostParam'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/hello.HelloResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+      summary: HelloGet
+      tags:
+      - hello
+  /demo-docker/api/v1/users:
+    get:
+      consumes:
+      - application/json
+      description: 获取用户
+      operationId: ListUser
+      parameters:
+      - description: Bearer token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 手机号
+        in: query
+        name: mobile
+        type: string
+      - description: 姓名
+        in: query
+        name: name
+        type: string
+      - description: 页数1开始
+        in: query
+        name: pageOffset
+        type: integer
+      - description: 每页数量
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ListUserResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+      summary: ListUser
+      tags:
+      - user
+    post:
+      consumes:
+      - application/json
+      description: 创建用户
+      operationId: CreateOrUpdateUser
+      parameters:
+      - description: 活动
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/user.CreateOrUpdateUserBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ErrorResp'
+      summary: CreateOrUpdateUser
+      tags:
+      - user
+swagger: "2.0"
