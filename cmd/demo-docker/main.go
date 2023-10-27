@@ -5,6 +5,7 @@ import (
 
 	"github.com/kunlun-qilian/confx"
 	"github.com/rookie-luochao/gin-demo/cmd/demo-docker/apis"
+	_ "github.com/rookie-luochao/gin-demo/cmd/demo-docker/docs"
 	"github.com/rookie-luochao/gin-demo/cmd/demo-docker/global"
 	"github.com/spf13/cobra"
 )
