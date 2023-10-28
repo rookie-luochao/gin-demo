@@ -14,8 +14,6 @@ WORKSPACE ?= name
 build:
 	cd ./cmd/$(WORKSPACE) && $(GOBUILD)
 
-# 生成服务端
-
 # 生成swagger
 swagger:
 	swag init --pd -d ./cmd/$(WORKSPACE) -o ./cmd/$(WORKSPACE)/docs

@@ -11,7 +11,7 @@ import (
 )
 
 func HelloRouter(r *gin.RouterGroup) {
-	r.GET("/hello", auth.Authorization(), HelloGet)
+	r.GET("/hello", HelloGet)
 	//r.GET("/hello/:age/:sex", auth.Authorization(), HelloGetWithPath)
 	r.POST("/hello", auth.Authorization(), HelloPost)
 }
@@ -109,7 +109,7 @@ type HelloPostBody struct {
 
 // @BasePath /
 // PingExample godoc
-// @Summary HelloGet
+// @Summary HelloPost
 // @Schemes
 // @Description HelloPost
 // @Tags hello

@@ -1,4 +1,4 @@
-FROM private-harbor.xxx.com/xxx/builder:v1.0.0 AS build-env
+FROM golang:1.20-bullseye AS build-env
 
 FROM build-env AS builder
 
@@ -12,11 +12,12 @@ COPY ./ ./
 RUN make build WORKSPACE=demo-docker
 
 # runtime
-FROM private-harbor.xxx.com/xxx/runtime:v1.0.0
+FROM debian:11
 
 COPY --from=builder /go/src/cmd/demo-docker/demo-docker /go/bin/demo-docker
 
-
+COPY --from=builder /go/src/cmd/demo-docker/openapi.json /go/bin/cmd/demo-docker/openapi.json
+		
 EXPOSE 9090
 
 EXPOSE 80

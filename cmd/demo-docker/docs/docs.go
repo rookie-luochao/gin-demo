@@ -77,7 +77,7 @@ const docTemplate = `{
                 "tags": [
                     "hello"
                 ],
-                "summary": "HelloGet",
+                "summary": "HelloPost",
                 "operationId": "HelloPost",
                 "parameters": [
                     {

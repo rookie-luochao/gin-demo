@@ -247,7 +247,7 @@
             "description": "Internal Server Error"
           }
         },
-        "summary": "HelloGet",
+        "summary": "HelloPost",
         "tags": [
           "hello"
         ],
