@@ -13,7 +13,6 @@ func NewRooter(r *gin.Engine) {
 
 	v1 := r.Group("/demo-docker/api/v1")
 	hello.HelloRouter(v1)
-
 	v1.POST("/users/create-or-update-user", user.CreateOrUpdateUser)
 	v1.GET("/users", auth.Authorization(), user.ListUser)
 }

@@ -9,7 +9,7 @@ require (
 	github.com/go-courier/sqlx/v2 v2.23.13
 	github.com/json-iterator/go v1.1.12
 	github.com/kunlun-qilian/conflogger v0.1.0
-	github.com/kunlun-qilian/confserver v0.8.0
+	github.com/kunlun-qilian/confserver v0.12.2
 	github.com/rookie-luochao/confx v0.0.1
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.7.0
@@ -23,7 +23,6 @@ require (
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
-	github.com/gin-contrib/cors v1.3.1 // indirect
 	github.com/gin-contrib/gzip v0.0.5 // indirect
 	github.com/gin-contrib/pprof v1.4.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect

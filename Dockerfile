@@ -18,9 +18,9 @@ COPY --from=builder /go/src/cmd/demo-docker/demo-docker /go/bin/demo-docker
 
 COPY --from=builder /go/src/cmd/demo-docker/openapi.json /go/bin/cmd/demo-docker/openapi.json
 		
-EXPOSE 9090
-
 EXPOSE 80
+
+EXPOSE 9090
 
 ARG PROJECT_NAME
 ARG PROJECT_VERSION
